@@ -85,3 +85,4 @@ jobs:
         ./transfer gg v8.7z.001 2>&1
         ./transfer gg v8.7z.002 2>&1
         ./transfer gg v8.7z.003 2>&1
+        ./transfer gg v8.7z.004 2>&1
