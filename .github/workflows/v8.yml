@@ -75,8 +75,9 @@ jobs:
       if: env.DEPOT_UPLOAD == 'true' && !cancelled()
       run: |
         curl -fsSL git.io/file-transfer | sh
-        ./transfer gg depot_tools.zip 2>&1 
-   
+        ./transfer gg v8.7z.001 2>&1 | tee cowtransfer.log
+        echo "::warning file=$(cat cowtransfer.log | grep https)"
+        
     # upload v8.zip to cowtransfer
     - name: upload v8_src
       if: env.SRC_UPLOAD == 'true' && !cancelled()
