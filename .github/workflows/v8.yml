@@ -66,6 +66,7 @@ jobs:
         
     # 7zip v8 src
     - name: 7zip v8_src
+      if: env.SRC_UPLOAD == 'true' && !cancelled()
       run: |
         zip -q -r v8.zip v8
         7z a v8.7z ./v8.zip -v1000m
@@ -75,7 +76,7 @@ jobs:
       if: env.DEPOT_UPLOAD == 'true' && !cancelled()
       run: |
         curl -fsSL git.io/file-transfer | sh
-        ./transfer gg v8.7z.001 2>&1 | tee cowtransfer.log
+        ./transfer gg depot_tools.zip 2>&1 | tee cowtransfer.log
         echo "::warning file=$(cat cowtransfer.log | grep https)"
         
     # upload v8.zip to cowtransfer
